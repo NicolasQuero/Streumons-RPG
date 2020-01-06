@@ -8,6 +8,10 @@
 #include "../GameMap.h"
 #include "../Combat.h"
 
+using namespace std;
+
+class Entity;
+
 
 class Oueurj : public Entity {
 private:

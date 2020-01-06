@@ -1,4 +1,7 @@
 #include "Jeu.h"
+#include "Entities/Oueurj.h"
+#include "Board.h"
+#include "GameMap.h"
 
 
 Jeu::Jeu()
@@ -25,6 +28,57 @@ Jeu::Jeu()
     }
     else{std::cout << "ERREUR: Impossible d'ouvrir en lecture le fichier de jeu cree." << std::endl;}
     this->miniMap();
+}
+
+void Jeu::startGame() {
+    this->afficherMiniMap();
+    int k=-1;//definit s'ou on viens
+    int turn = 0;
+    Oueurj O = Oueurj();
+    cout << endl << "***************** La partie débute *****************" << endl << endl;
+    do{
+        cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
+        int posX, posY;
+
+        GameMap Map(this);
+        Map.creaPorte(Map.CleObtenu());
+
+        if(k==2){posY=Map.getHauteur()-2,posX=(Map.getLongueur())/2;} // on vient d'en haut, on cree le joueur en bas
+
+        else if(k==1){posY=1,posX=(Map.getLongueur())/2;}//... d'en bas,... en haut
+
+        else if(k==4){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())-2;}//... de gauche,... a gauche
+
+        else if(k==3){posY=(Map.getHauteur())/2,posX=1;}//... de droite,... a droite
+
+        else if(k==-1){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())/2;}
+        O.pos = Pos(posY, posX);
+        Board board = Board(&Map,O);
+        board.printMap();
+        k = 0;
+        while (k == 0) {
+            k = board.playTurn();
+            turn ++;
+            cout << endl << "********************  tour " << turn << " ********************" << endl << endl;
+            board.printMap();
+        }
+        switch (k) {
+        case 1:
+            this->deplacementMiniMapBas();
+            break;
+        case 2:
+            this->deplacementMiniMapHaut();
+            break;
+        case 3:
+            this->deplacementMiniMapDroite();
+            break;
+        case 4:
+            this->deplacementMiniMapGauche();
+            break;
+        }
+
+    }while(this->getNomMap()!="fin");
+    cout<<"vous avez gagner";
 }
 
 void Jeu::miniMap() // cree un tableau identique que m_emplacementMap avec valeur -1 si il y a rien,0 si il y a une map

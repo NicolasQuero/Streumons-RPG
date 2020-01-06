@@ -7,7 +7,8 @@
 #include <string>
 #include <ctime>
 
-#include"FonctionUtile.h"
+#include "Entities/Pos.h"
+#include "FonctionUtile.h"
 
 
 class Jeu
@@ -20,7 +21,7 @@ private:
 
 public:
     Jeu();
-
+    void startGame();
     void miniMap();
     int getTailleY();
     int getTailleX();
