@@ -43,15 +43,17 @@ void Jeu::startGame() {
         GameMap Map(this);
         Map.creaPorte(Map.CleObtenu());
 
-        if(k==2){posY=Map.getHauteur()-2,posX=(Map.getLongueur())/2;} // on vient d'en haut, on cree le joueur en bas
 
-        else if(k==1){posY=1,posX=(Map.getLongueur())/2;}//... d'en bas,... en haut
+        if(k==1){posY=1,posX=(Map.getLongueur())/2;}//... d'en bas,... en haut
 
-        else if(k==4){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())-2;}//... de gauche,... a gauche
+        else if(k==2){posY=Map.getHauteur()-2,posX=(Map.getLongueur())/2;} // on vient d'en haut, on cree le joueur en bas
 
         else if(k==3){posY=(Map.getHauteur())/2,posX=1;}//... de droite,... a droite
 
+        else if(k==4){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())-2;}//... de gauche,... a gauche
+
         else if(k==-1){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())/2;}
+
         O->pos = Pos(posY, posX);
         Board board = Board(&Map, O);
         board.printMap();

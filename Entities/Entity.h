@@ -24,6 +24,7 @@ public:
     Entity(char type, int x, int y, int hp, int dmg);
     Entity(char type, Pos p, int hp, int dmg);
     int getHp() const { return hp; };
+    virtual int getMp() const { return -1; }
     void inflictDamage(int amount) {
         hp -= amount;
         if (hp <= 0)

@@ -16,6 +16,7 @@ private:
 public:
     Combat(Entity *J, Entity *M);
     bool startCombat(); // returns true if the player is still alive, false otherwise
+    void printCombatInterface() const;
 
 
 

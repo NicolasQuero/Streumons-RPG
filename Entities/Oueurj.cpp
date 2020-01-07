@@ -11,17 +11,17 @@ const int Oueurj::POWER_MAX = 20;
 const int Oueurj::HEAL_COST = 20;
 const int Oueurj::POWERATK_COST = 10;
 
-Oueurj::Oueurj() : Entity('j', -1, -1, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX) , teleportsLeft(0){}
+Oueurj::Oueurj() : Entity('j', -1, -1, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX) , score(0), teleportsLeft(0){}
 
-Oueurj::Oueurj(Pos p) : Entity('j', p, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX), teleportsLeft(0) {}
+Oueurj::Oueurj(Pos p) : Entity('j', p, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX), score(0), teleportsLeft(0) {}
 
-Oueurj::Oueurj(int row, int col) : Entity('j', row, col, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX) , teleportsLeft(0){}
+Oueurj::Oueurj(int row, int col) : Entity('j', row, col, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX), score(0), teleportsLeft(0){}
 
 void Oueurj::act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     bool tourEnded = false;
     wantsTeleport = false;
     while (!tourEnded) { // Tant que le tour n'est pas valide on demande au joueur ce qu'il veut faire
-        cout << "Que désirez-vous faire ?" << endl
+        cout << endl << "Que désirez-vous faire ?" << endl << endl
         << "Se déplacer :" << endl << "1 (bas gauche), 2 (bas), 3 (bas droite)" << endl << "4 (gauche), 5 (immobile), 6 (droite)" << endl
         << "7 (haut gauche), 8 (haut), 9 (haut droite)" << endl << endl;
         cout << "Téléportation : t" << endl;
@@ -121,6 +121,15 @@ int Oueurj::monsterIndexAt(Pos target, vector<Entity*> &streumons) {
     return -1; // no monster found, return empty char
 }
 
+void Oueurj::addScore(Entity *M) {
+    if (M->getType() == 's')
+        score += 100;
+    else if (M->getType() == 'S')
+        score += 250;
+    else if (M->getType() == 'o')
+        score += 500;
+}
+
     //////////////////////////////////
     // BELOW ARE THE COMBAT METHODS //
     //////////////////////////////////
@@ -129,8 +138,10 @@ bool Oueurj::playCombatTurn(Entity *M) { // Method managing the turn of the play
     char attackChoice;
     bool turnOver = false;
     while (!turnOver) {
-        cout << "Quelle attaque désirez-vous lancer ? Attaque normale : n, Attaque puissante : p, Soin : s" << endl;
-        cout << "(Il vous reste " << mp << " point(s) de mana)" << endl;
+        cout << endl << "Quelle attaque désirez-vous lancer ? " << endl << endl
+        << " - Attaque normale : n" << endl
+        << " - Attaque puissante : p (" << POWERATK_COST << " points de mana)" << endl
+        << " - Soin : s (" << HEAL_COST << " points de mana)" << endl << endl;
         cin >> attackChoice;
 
         switch ( attackChoice ) {

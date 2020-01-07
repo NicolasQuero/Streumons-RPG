@@ -100,7 +100,7 @@ void Board::printMap() const {
 void Board::printInformation(int &row) const {
     switch ( row ) {
     case 0:
-        cout << "    Score : " << score;
+        cout << "    Score : " << J->getScore();
         break;
     case 2:
         cout << "    HP : " << J->getHp();
@@ -121,6 +121,7 @@ int Board::playTurn() {
             monstre->act(J, *gamemap, charMap, monstersOnMap);
             if (!monstre->isAlive()) {
                 gamemap->modifierValeurGameMap(' ',monstre->pos.x,monstre->pos.y);
+                J->addScore(monstre);
                 monstersOnMap.erase(remove(monstersOnMap.begin(), monstersOnMap.end(), monstre), monstersOnMap.end());
                 delete monstre;
             }
@@ -140,8 +141,6 @@ int Board::playTurn() {
     }
     return 0;
 }
-
-
 
 Board::~Board() {
     for (Entity* monster : monstersOnMap) {

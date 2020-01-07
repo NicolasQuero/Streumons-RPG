@@ -19,7 +19,7 @@ private:
     GameMap *gamemap;
     int score;
     vector<vector<char>> charMap;
-    const vector<char> monsterPossibleLetters = {'s', 'S', 'e', 'E', 'o', 'O'}; // vector of the possible letters associated to a monster
+    const vector<char> monsterPossibleLetters = {'s', 'S', 'o'}; // vector of the possible letters associated to a monster
     vector<Entity*> monstersOnMap; // Un vector d'objets abstraits doit être un vector de pointeurs
     bool monstreCree;
     Oueurj *J;
