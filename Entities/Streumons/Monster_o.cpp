@@ -2,9 +2,9 @@
 
 using namespace std;
 
-const int Monster_o::HP_MAX = 2;
-const int Monster_o::BASE_DMG = 1;
-const double Monster_o::DETECTION_RADIUS = 20;
+const int Monster_o::HP_MAX = 40;
+const int Monster_o::BASE_DMG = 10;
+const double Monster_o::DETECTION_RADIUS = 12;
 
 Monster_o::Monster_o(int x, int y) : Streumon('o', x, y, HP_MAX, BASE_DMG) {}
 

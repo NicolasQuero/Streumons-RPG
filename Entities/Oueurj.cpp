@@ -4,12 +4,12 @@
 
 using namespace std;
 
-const int Oueurj::BASE_DMG = 1;
-const int Oueurj::HP_MAX = 5;
-const int Oueurj::MP_MAX = 10;
-const int Oueurj::POWER_MAX = 3;
-const int Oueurj::HEAL_COST = 3;
-const int Oueurj::POWERATK_COST = 2;
+const int Oueurj::BASE_DMG = 10;
+const int Oueurj::HP_MAX = 100;
+const int Oueurj::MP_MAX = 100;
+const int Oueurj::POWER_MAX = 20;
+const int Oueurj::HEAL_COST = 20;
+const int Oueurj::POWERATK_COST = 10;
 
 Oueurj::Oueurj() : Entity('j', -1, -1, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX) , teleportsLeft(0){}
 
