@@ -17,28 +17,31 @@ Oueurj::Oueurj(Pos p) : Entity('j', p, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWE
 
 Oueurj::Oueurj(int row, int col) : Entity('j', row, col, HP_MAX, BASE_DMG), mp(MP_MAX), power(POWER_MAX) , teleportsLeft(0){}
 
-void Oueurj::act(Entity &J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
+void Oueurj::act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     bool tourEnded = false;
+    wantsTeleport = false;
     while (!tourEnded) { // Tant que le tour n'est pas valide on demande au joueur ce qu'il veut faire
         cout << "Que désirez-vous faire ?" << endl
         << "Se déplacer :" << endl << "1 (bas gauche), 2 (bas), 3 (bas droite)" << endl << "4 (gauche), 5 (immobile), 6 (droite)" << endl
-        << "7 (haut gauche), 8 (haut), 9 (haut droite)" << endl << endl
-        << "Quitter : q" << endl;
+        << "7 (haut gauche), 8 (haut), 9 (haut droite)" << endl << endl;
         string choice;
         cin >> choice;
         tourEnded = manageChoice(choice, charMap, streumons);
     }
-    if (charMap[J.pos.x][J.pos.y] == 'D') {
+    if (charMap[J->pos.x][J->pos.y] == 'D') {
         gameMap.prendreCle();
         gameMap.creaPorte(1);
-        gameMap.modifierValeurGameMap(' ',J.pos.x,J.pos.y);
+        gameMap.modifierValeurGameMap(' ', J->pos.x, J->pos.y);
         //charMap[J.pos.x][J.pos.y] = ' ';
     }
-    cout << J.pos << "  |  " << charMap[J.pos.x][J.pos.y] << endl;
+    else if (charMap[J->pos.x][J->pos.y] == 'C') {
+        this->addTeleport();
+        gameMap.modifierValeurGameMap(' ', J->pos.x, J->pos.y);
+    }
 
 }
 
-bool Oueurj::quitGame() const {
+/*bool Oueurj::quitGame() const {
     string confirmChoice;
     cout << "Êtes-vous sûr de vouloir quitter le jeu ? o/n" << endl;
     cin >> confirmChoice; // Demande de confirmation
@@ -53,7 +56,7 @@ bool Oueurj::quitGame() const {
     else if (confirmChoice[0] == 'n') // Le joueur ne veut pas quitter
         return false;
 
-}
+}*/
 
 bool isNumber(char c) {
     char integers[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -65,13 +68,13 @@ bool isNumber(char c) {
 }
 
 bool Oueurj::manageChoice(string choice, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
-    if (choice[0] == 'q') { // Quitter le jeu choisi
-        return quitGame();
-        Board::setGameOn(false);
-    }
-    else if (isNumber(choice[0])) { // Le joueur veut se déplacer
+    if (isNumber(choice[0])) { // Le joueur veut se déplacer
         int deplacement = choice[0] - '0'; // on convertit l'entier entré (de type string) en entier
         movePlayer(deplacement, charMap, streumons);
+        return true;
+    }
+    else if (choice[0] == 't' || choice [0] == 'T') {
+        wantsTeleport = true;
         return true;
     }
     return false;
@@ -90,7 +93,7 @@ void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<E
             }
             else { // Sinon on se bat comme un vrai Oueurj (ou on ajoute le mob au Streumédex)
                 cout << "Monstre " << streumons[monsterIndex]->getType() << " rencontré !" << endl;
-                Combat combat = Combat(*this, *streumons[monsterIndex]);
+                Combat combat = Combat(this, streumons[monsterIndex]);
                 combat.startCombat();
                 if (this->isAlive()) {
                     pos = targetPos;
@@ -121,7 +124,7 @@ int Oueurj::monsterIndexAt(Pos target, vector<Entity*> &streumons) {
     // BELOW ARE THE COMBAT METHODS //
     //////////////////////////////////
 
-bool Oueurj::playCombatTurn(Entity& M) { // Method managing the turn of the player in the combat
+bool Oueurj::playCombatTurn(Entity *M) { // Method managing the turn of the player in the combat
     char attackChoice;
     bool turnOver = false;
     while (!turnOver) {
@@ -132,11 +135,11 @@ bool Oueurj::playCombatTurn(Entity& M) { // Method managing the turn of the play
         switch ( attackChoice ) {
             case 'n': {
                 attack(M); // Normal attack designed in the Entity class
-                return M.isAlive(); // This attack cannot fail so no need to check if it returns true
+                return M->isAlive(); // This attack cannot fail so no need to check if it returns true
             }
             case 'p': {
                 if ( powerAttack(M) ) // More powerful attack
-                    return M.isAlive();
+                    return M->isAlive();
             }
             case 's': {
                 if ( heal() ) // Heal the player
@@ -147,12 +150,12 @@ bool Oueurj::playCombatTurn(Entity& M) { // Method managing the turn of the play
     return false;
 }
 
-bool Oueurj::powerAttack(Entity& M) {
+bool Oueurj::powerAttack(Entity *M) {
     if (mp > POWERATK_COST) {
-        M.inflictDamage(power);
+        M->inflictDamage(power);
         mp -= POWERATK_COST;
         cout << "Vous infligez une attaque puissante !" << endl
-        << "L'ennemi n'a plus que " << M.getHp() << " point(s) de vie" << endl;
+        << "L'ennemi n'a plus que " << M->getHp() << " point(s) de vie" << endl;
         return true;
     }
     else {

@@ -29,11 +29,11 @@ public:
         if (hp <= 0)
             is_alive = false;
     };
-    bool attack(Entity& E);
+    bool attack(Entity *E);
     bool isAlive() const { return is_alive; };
     char getType() const { return type; };
-    virtual void act(Entity &J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) = 0;
-    virtual bool playCombatTurn(Entity &E) = 0;
+    virtual void act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) = 0;
+    virtual bool playCombatTurn(Entity *E) = 0;
 
     virtual ~Entity() {};
 

@@ -34,7 +34,7 @@ void Jeu::startGame() {
     this->afficherMiniMap();
     int k=-1;//definit s'ou on viens
     int turn = 0;
-    Oueurj O = Oueurj();
+    Oueurj *O = new Oueurj();
     cout << endl << "***************** La partie débute *****************" << endl << endl;
     do{
         cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
@@ -52,8 +52,8 @@ void Jeu::startGame() {
         else if(k==3){posY=(Map.getHauteur())/2,posX=1;}//... de droite,... a droite
 
         else if(k==-1){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())/2;}
-        O.pos = Pos(posY, posX);
-        Board board = Board(&Map,O);
+        O->pos = Pos(posY, posX);
+        Board board = Board(&Map, O);
         board.printMap();
         k = 0;
         while (k == 0) {
@@ -75,10 +75,14 @@ void Jeu::startGame() {
         case 4:
             this->deplacementMiniMapGauche();
             break;
+        case -1:
+            this->teleportation();
+            break;
         }
 
     }while(this->getNomMap()!="fin");
     cout<<"vous avez gagner";
+    delete O;
 }
 
 void Jeu::miniMap() // cree un tableau identique que m_emplacementMap avec valeur -1 si il y a rien,0 si il y a une map
@@ -253,3 +257,4 @@ void Jeu::afficherSchemaJeu()
     }
     std::cout<<std::endl<<std::endl;
 }
+

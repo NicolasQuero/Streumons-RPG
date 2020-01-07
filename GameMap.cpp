@@ -1,6 +1,5 @@
 #include "GameMap.h"
 
-
 using namespace std;
 
 GameMap::GameMap(Jeu *miniMap) {

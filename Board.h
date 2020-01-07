@@ -22,18 +22,17 @@ private:
     const vector<char> monsterPossibleLetters = {'s', 'S', 'e', 'E', 'o', 'O'}; // vector of the possible letters associated to a monster
     vector<Entity*> monstersOnMap; // Un vector d'objets abstraits doit être un vector de pointeurs
     bool monstreCree;
-    Oueurj J;
+    Oueurj *J;
 
 public:
     static bool gameOn;
     static void setGameOn(bool a) {gameOn = a;};
-    Board(GameMap *gamemap,Oueurj &j);
+    Board(GameMap *gamemap,Oueurj *j);
     void actualiseMap(GameMap *gamemap);
     void addMonster(char c, int i, int j);
     void setCharMaps(GameMap &gameMap);
     char getCharAt(int &x, int &y) const;
     void printMap() const ;
-    void printCoordinatesAroundTheMap(vector<vector<char>> charMap, int row, int col) const;
     void printInformation(int &row) const;
     int playTurn();
     ~Board();

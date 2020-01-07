@@ -3,9 +3,9 @@ using namespace std;
 
 bool Board::gameOn = true;
 
-Board::Board(GameMap *gamemap,Oueurj &j) : gamemap(gamemap), score(0),monstreCree(false),J(j) { // each string from the list must have the same length
+Board::Board(GameMap *gamemap, Oueurj *j) : gamemap(gamemap), score(0), monstreCree(false) { // each string from the list must have the same length
     setCharMaps(*gamemap); // stores the value of each character from mapText in charMap
-   // J = Oueurj(2, 3);
+    J = j;
 }
 
 void Board::setCharMaps(GameMap &gameMap) {
@@ -56,7 +56,7 @@ void Board::addMonster(char c, int i, int j) {
 
 void Board::actualiseMap(GameMap *gamemap_)
 {
-    gamemap=gamemap_;
+    gamemap = gamemap_;
     charMap.clear();
     setCharMaps(*gamemap);
 }
@@ -80,7 +80,7 @@ void Board::printMap() const {
                     break; // so we print the monster and no need to print the rest
                 }
             }
-            if (!monsterFound && row == J.pos.x && col == J.pos.y) // Si le joueur est à la position rendue on l'affiche
+            if (!monsterFound && row == J->pos.x && col == J->pos.y) // Si le joueur est à la position rendue on l'affiche
                 cout << 'J';// << "  ";
             else if (!monsterFound) { // Sinon on affiche la map
                 if (c == '#')
@@ -97,56 +97,35 @@ void Board::printMap() const {
     }
 }
 
-void Board::printCoordinatesAroundTheMap(vector<vector<char>> charMap, int row, int col) const {
-    if (row == 0 && col == 0) { // We print the column indexes over the map
-        cout << "   "; // mise en page
-        for (char c : charMap[0]) {
-            if (col < 10) {
-                cout << col << "  "; // If the index of the column is 1 char long we print it with a space behind
-                col++;
-            }
-            else {
-                cout << col << " "; // If it's 2 chars long we print it without space behind
-                col++;
-            }
-        }
-        cout << endl << 0 << "  "; // after printing the top line we break the line and print the first 0 for the rows
-    }
-    else if (col == 0) {
-        if (row < 10)
-            cout << row << "  ";
-        else
-            cout << row << " ";
-    }
-}
-
 void Board::printInformation(int &row) const {
     switch ( row ) {
     case 0:
         cout << "    Score : " << score;
         break;
     case 2:
-        cout << "    HP : " << J.getHp();
+        cout << "    HP : " << J->getHp();
         break;
     case 4:
-        cout << "    Téléportations : " << J.getTeleportsLeft();
+        cout << "    Téléportations : " << J->getTeleportsLeft();
     }
 }
 
 int Board::playTurn() {
-    J.act(J, *gamemap, charMap, monstersOnMap);
+    J->act(J, *gamemap, charMap, monstersOnMap);
+    if (J->wantsToTeleport() && J->getTeleportsLeft() > 0) {
+        J->useTeleport();
+        return -1;
+    }
     if (gameOn) {
         for (Entity* monstre : monstersOnMap) {
             monstre->act(J, *gamemap, charMap, monstersOnMap);
-            cout<<monstre->pos.x<<"et"<<monstre->pos.y<<endl;
             if (!monstre->isAlive()) {
-                cout<<"je suis al";
                 gamemap->modifierValeurGameMap(' ',monstre->pos.x,monstre->pos.y);
                 monstersOnMap.erase(remove(monstersOnMap.begin(), monstersOnMap.end(), monstre), monstersOnMap.end());
                 delete monstre;
             }
         }
-        if (!J.isAlive()) {
+        if (!J->isAlive()) {
             for (int i = 0; i<5; i++)
                 cout << " ********** VOUS ÊTES MORT ! ********** " << endl;
             gameOn = false;
@@ -156,9 +135,8 @@ int Board::playTurn() {
     this->actualiseMap(gamemap);
     char portes[] = {'b', 'h', 'd', 'g'};
     for (int i = 0; i < 4; i++) {
-        if (J.pos == gamemap->getPortesPos(portes[i]))
+        if (J->pos == gamemap->getPortesPos(portes[i]))
             return i+1;
-        cout << J.pos << " Porte : " << portes[i] << " " << gamemap->getPortesPos(portes[i]) << endl;
     }
     return 0;
 }

@@ -10,7 +10,6 @@
 #include "Entities/Pos.h"
 #include "FonctionUtile.h"
 
-
 class Jeu
 {
 private:

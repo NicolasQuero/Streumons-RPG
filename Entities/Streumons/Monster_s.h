@@ -14,9 +14,9 @@ private:
 
 public:
     Monster_s(int x = -1, int y = -1,int niveau=1,char s='s');
-    virtual void act(Entity &J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons); // Il faut définir la fonction abstraite implémentée
-    bool playCombatTurn(Entity &E);
-    void moveMonster(Entity &J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
+    virtual void act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons); // Il faut définir la fonction abstraite implémentée
+    bool playCombatTurn(Entity *E);
+    void moveMonster(Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons);
 };
 
 
