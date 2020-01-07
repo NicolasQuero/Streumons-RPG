@@ -24,6 +24,7 @@ void Oueurj::act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vec
         cout << "Que désirez-vous faire ?" << endl
         << "Se déplacer :" << endl << "1 (bas gauche), 2 (bas), 3 (bas droite)" << endl << "4 (gauche), 5 (immobile), 6 (droite)" << endl
         << "7 (haut gauche), 8 (haut), 9 (haut droite)" << endl << endl;
+        cout << "Téléportation : t" << endl;
         string choice;
         cin >> choice;
         tourEnded = manageChoice(choice, charMap, streumons);
