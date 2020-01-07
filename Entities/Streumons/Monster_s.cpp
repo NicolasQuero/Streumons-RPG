@@ -2,8 +2,8 @@
 
 using namespace std;
 
-const int Monster_s::HP_MAX = 1;
-const int Monster_s::BASE_DMG = 1;
+const int Monster_s::HP_MAX = 25;
+const int Monster_s::BASE_DMG = 6;
 
 Monster_s::Monster_s(int x, int y,int niveau,char s) : Streumon(s, x, y, niveau*HP_MAX, niveau*BASE_DMG) {}
 void Monster_s::act(Entity &J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons)
