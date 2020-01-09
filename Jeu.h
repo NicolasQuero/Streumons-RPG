@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 
 #include "Entities/Pos.h"
 #include "FonctionUtile.h"

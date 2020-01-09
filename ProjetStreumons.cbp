@@ -35,6 +35,10 @@
 		<Unit filename="Board.h" />
 		<Unit filename="Combat.cpp" />
 		<Unit filename="Combat.h" />
+		<Unit filename="Entities/Animations/Animation.cpp" />
+		<Unit filename="Entities/Animations/Animation.h" />
+		<Unit filename="Entities/Animations/Frame.cpp" />
+		<Unit filename="Entities/Animations/Frame.h" />
 		<Unit filename="Entities/Entity.cpp" />
 		<Unit filename="Entities/Entity.h" />
 		<Unit filename="Entities/Oueurj.cpp" />
