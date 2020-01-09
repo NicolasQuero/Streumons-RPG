@@ -13,6 +13,7 @@ bool Combat::startCombat() {
     cout << "Le combat entre " << J->getType() << " et " << M->getType() << " commence !" << endl << endl;
     cout << J->getType() << " a " << J->getHp() << " HP." << endl;
     cout << M->getType() << " a " << M->getHp() << " HP." << endl;
+    usleep(300000);
     while (keepFighting) {
         printCombatInterface();
         keepFighting = J->playCombatTurn(M); // playCombatTurn returns false if E died hence we stop the fight
@@ -23,17 +24,21 @@ bool Combat::startCombat() {
 }
 
 void Combat::printCombatInterface() const {
-    cout << "-------------------------" << endl;
-    cout << "-                       -" << endl;
-    cout << "-                       -" << endl;
-    cout << "-      " << J->getType() << "         " << M->getType() << "      -" << endl;
-    cout << "-                       -" << endl;
-    cout << "    " << "HP : " << J->getHp() << "   HP : " << M->getHp() << "    " << endl;
+    system("CLS");
+    cout << "     ----------------- " << endl;
+    cout << "     | COMBAT " << J->getType() << " vs " << M->getType() << " |" << endl;
+    cout << "     ----------------- " << endl << endl;
+    cout << "  -------------------------" << endl;
+    cout << "  -                       -" << endl;
+    cout << "  -                       -" << endl;
+    cout << "  -      " << J->getType() << "         " << M->getType() << "      -" << endl;
+    cout << "  -                       -" << endl;
+    cout << "      " << "HP : " << J->getHp() << "   HP : " << M->getHp() << "    " << endl;
     if (J->getType() == 'j')
-        cout << "    " << "MP : " << J->getMp() << "   " << endl;
+        cout << "      " << "MP : " << J->getMp() << "   " << endl;
     else if (M->getType() == 'j')
-        cout << "              MP : " << M->getMp() << "   " << endl;
-    cout << "-                       -" << endl;
-    cout << "-                       -" << endl;
-    cout << "-------------------------" << endl;
+        cout << "                MP : " << M->getMp() << "   " << endl;
+    cout << "  -                       -" << endl;
+    cout << "  -                       -" << endl;
+    cout << "  -------------------------" << endl;
 }

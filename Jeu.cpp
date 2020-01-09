@@ -37,7 +37,6 @@ void Jeu::startGame() {
     Oueurj *O = new Oueurj();
     cout << endl << "***************** La partie débute *****************" << endl << endl;
     do{
-        cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
         int posX, posY;
 
         GameMap Map(this);
@@ -56,13 +55,13 @@ void Jeu::startGame() {
 
         O->pos = Pos(posY, posX);
         Board board = Board(&Map, O);
-        board.printMap();
         k = 0;
         while (k == 0) {
+            system("CLS");
+            cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
+            board.printMap();
             k = board.playTurn();
             turn ++;
-            cout << endl << "********************  tour " << turn << " ********************" << endl << endl;
-            board.printMap();
         }
         switch (k) {
         case 1:
@@ -82,8 +81,11 @@ void Jeu::startGame() {
             break;
         }
 
-    }while(this->getNomMap()!="fin");
-    cout<<"vous avez gagner";
+    }while(this->getNomMap()!="fin" && O->isAlive());
+    if(O->isAlive())
+        cout<<"Bravo ! Vous avez gagné !" << endl;
+    else
+        cout << "Vous avez perdu..." << endl;
     delete O;
 }
 

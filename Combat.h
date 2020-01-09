@@ -2,6 +2,8 @@
 #define COMBAT_H_INCLUDED
 
 #include <iostream>
+#include <cstdlib>
+#include <unistd.h>
 
 #include "Entities/Entity.h"
 

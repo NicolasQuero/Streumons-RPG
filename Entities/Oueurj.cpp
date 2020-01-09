@@ -138,10 +138,10 @@ bool Oueurj::playCombatTurn(Entity *M) { // Method managing the turn of the play
     char attackChoice;
     bool turnOver = false;
     while (!turnOver) {
-        cout << endl << "Quelle attaque désirez-vous lancer ? " << endl << endl
-        << " - Attaque normale : n" << endl
-        << " - Attaque puissante : p (" << POWERATK_COST << " points de mana)" << endl
-        << " - Soin : s (" << HEAL_COST << " points de mana)" << endl << endl;
+        cout << endl << " Quelle attaque désirez-vous lancer ? " << endl << endl
+        << "  - Attaque normale : n" << endl
+        << "  - Attaque puissante : p (" << POWERATK_COST << " points de mana)" << endl
+        << "  - Soin : s (" << HEAL_COST << " points de mana)" << endl << endl;
         cin >> attackChoice;
 
         switch ( attackChoice ) {
@@ -166,12 +166,12 @@ bool Oueurj::powerAttack(Entity *M) {
     if (mp > POWERATK_COST) {
         M->inflictDamage(power);
         mp -= POWERATK_COST;
-        cout << "Vous infligez une attaque puissante !" << endl
-        << "L'ennemi n'a plus que " << M->getHp() << " point(s) de vie" << endl;
+        cout << " Vous infligez une attaque puissante !" << endl
+        << " L'ennemi n'a plus que " << M->getHp() << " point(s) de vie" << endl;
         return true;
     }
     else {
-        cout << "Pas assez de mana ! Vous avez " << mp << " point(s) de mana (" << POWERATK_COST << " requis)" << endl;
+        cout << " Pas assez de mana ! Vous avez " << mp << " point(s) de mana (" << POWERATK_COST << " requis)" << endl;
         return false; // Not enough mp
     }
 }
@@ -182,11 +182,11 @@ bool Oueurj::heal() {
         mp -= HEAL_COST;
         if (hp > HP_MAX)
             hp = HP_MAX;
-        cout << "Vous vous soignez, vous avez désormais " << hp << " points de vie" << endl;
+        cout << " Vous vous soignez, vous avez désormais " << hp << " points de vie" << endl;
         return true;
     }
     else {
-        cout << "Pas assez de mana ! Vous avez " << mp << " point(s) de mana (" << HEAL_COST << " mp requis)" << endl;
+        cout << " Pas assez de mana ! Vous avez " << mp << " point(s) de mana (" << HEAL_COST << " mp requis)" << endl;
         return false; // Not enough mp
     }
 }

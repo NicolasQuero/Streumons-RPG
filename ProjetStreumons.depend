@@ -925,7 +925,7 @@
 	"Entities/Pos.h"
 	<windows.h>
 
-1578421943 source:c:\users\nicoq\documents\github\streumons-rpg\board.cpp
+1578422289 source:c:\users\nicoq\documents\github\streumons-rpg\board.cpp
 	"Board.h"
 
 1578421848 c:\users\nicoq\documents\github\streumons-rpg\board.h
@@ -946,12 +946,12 @@
 	"Jeu.h"
 	"Entities/Pos.h"
 
-1578418296 c:\users\nicoq\documents\github\streumons-rpg\jeu.h
+1578504852 c:\users\nicoq\documents\github\streumons-rpg\jeu.h
 	<iostream>
 	<fstream>
 	<vector>
 	<string>
-	<ctime>
+	<cstdlib>
 	"Entities/Pos.h"
 	"FonctionUtile.h"
 
@@ -979,8 +979,10 @@
 	"../GameMap.h"
 	"../Combat.h"
 
-1578421156 c:\users\nicoq\documents\github\streumons-rpg\combat.h
+1578501618 c:\users\nicoq\documents\github\streumons-rpg\combat.h
 	<iostream>
+	<cstdlib>
+	<unistd.h>
 	"Entities/Entity.h"
 
 1578414128 c:\users\nicoq\documents\github\streumons-rpg\entities\streumons\streumon.h
@@ -1006,13 +1008,13 @@
 	"../Pos.h"
 	"../../Combat.h"
 
-1578421253 source:c:\users\nicoq\documents\github\streumons-rpg\combat.cpp
+1578502021 source:c:\users\nicoq\documents\github\streumons-rpg\combat.cpp
 	"Combat.h"
 
-1578415188 source:c:\users\nicoq\documents\github\streumons-rpg\entities\entity.cpp
+1578502041 source:c:\users\nicoq\documents\github\streumons-rpg\entities\entity.cpp
 	"Entity.h"
 
-1578422168 source:c:\users\nicoq\documents\github\streumons-rpg\entities\oueurj.cpp
+1578502346 source:c:\users\nicoq\documents\github\streumons-rpg\entities\oueurj.cpp
 	"Oueurj.h"
 	"../Board.h"
 
@@ -1034,7 +1036,7 @@
 1578416750 source:c:\users\nicoq\documents\github\streumons-rpg\gamemap.cpp
 	"GameMap.h"
 
-1578421085 source:c:\users\nicoq\documents\github\streumons-rpg\jeu.cpp
+1578502511 source:c:\users\nicoq\documents\github\streumons-rpg\jeu.cpp
 	"Jeu.h"
 	"Entities/Oueurj.h"
 	"Board.h"

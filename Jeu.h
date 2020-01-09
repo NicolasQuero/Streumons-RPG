@@ -5,7 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <ctime>
+#include <cstdlib>
 
 #include "Entities/Pos.h"
 #include "FonctionUtile.h"
