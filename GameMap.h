@@ -34,7 +34,10 @@ public:
     void prendreCle() { cle_obtenue = true; }
     bool CleObtenu();
     Pos getPortesPos(char c);
+    void enleverCle(bool cle);
+    void enlverCharg(bool charg);
     Pos getClePos();
+    Pos getChargPos();
     void creaPorte(bool cle=false);
     void creaPorteHaut(int val,bool cle);// val=0 carte non visite (porte fermée) val!=0 carte visite( porte ouverte)
     void creaPorteBas(int val,bool cle);// 'X' porte fermee

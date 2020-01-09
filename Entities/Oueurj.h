@@ -24,7 +24,7 @@ public:
     Oueurj(int x, int y);
     int getTeleportsLeft() const { return teleportsLeft; }
     void useTeleport() { teleportsLeft -= 1; }
-    bool wantsToTeleport() const { return wantsTeleport; } // Fonction à définir
+    bool wantsToTeleport() const { return wantsTeleport; }
     void addTeleport() { teleportsLeft += 1; }
     virtual int getMp() const override { return mp; }
     //bool quitGame() const;

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
+#include <time.h>
 
 #include "Entities/Pos.h"
 #include "FonctionUtile.h"
@@ -17,6 +18,7 @@ private:
     std::vector<std::vector<int> > m_miniMap;  //permet de connaitre si les map on deja ete visite (-1=vide, 0=map non visite, 1=visite, 2=le joueur est sur cette map)
     int m_posXj;  //position du joueur en X sur la miniMap
     int m_posYj;  //position du joueur en Y sur la miniMap
+    std::vector<Pos> m_chargeur;  // liste les maps ou les chargeur ont ete pris
 
 public:
     Jeu();
@@ -28,6 +30,9 @@ public:
     int getValeurMiniMap(int posY,int posX); //permet de connaitre ou est le joueur sur la minimap
     int getPosXJoueur();
     int getPosYJoueur();
+    bool presenceDeCle(); // permet de savoir si toute les salles adjacente on ete visite, si c'est le cas on pourra enlever les cle de cette salle
+    bool chargeurRamasse(); //verifie si le chargeur a deja ete ramassé
+    void addChargRamasse(); //ajoute les chargeur ramassé a la liste
 
     void deplacementMiniMapGauche();
     void deplacementMiniMapDroite();

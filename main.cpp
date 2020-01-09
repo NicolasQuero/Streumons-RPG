@@ -15,7 +15,7 @@ using namespace std;
 
 
 int main() {
-    SetConsoleOutputCP( 1252 ); // Pour afficher les accents dans le terminal
+    //SetConsoleOutputCP( 1252 ); // Pour afficher les accents dans le terminal
 
     Jeu j;
     j.startGame();

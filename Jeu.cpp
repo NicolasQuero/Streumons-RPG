@@ -31,38 +31,42 @@ Jeu::Jeu()
 }
 
 void Jeu::startGame() {
-    this->afficherMiniMap();
-    int k=-1;//definit s'ou on viens
+
+    int k=-1;//definit d'ou on viens
     int turn = 0;
     Oueurj *O = new Oueurj();
     cout << endl << "***************** La partie débute *****************" << endl << endl;
     do{
+        this->afficherMiniMap();
         int posX, posY;
+        int nbDeChargeur= O->getTeleportsLeft();
 
         GameMap Map(this);
-        Map.creaPorte(Map.CleObtenu());
-
+        Map.enleverCle(this->presenceDeCle()); //on regarde si il y a besoin des cle de la map
+        Map.enlverCharg(this->chargeurRamasse());
+        Map.creaPorte(Map.CleObtenu()); //on cree les portes (ouverte ou fermee)
 
         if(k==1){posY=1,posX=(Map.getLongueur())/2;}//... d'en bas,... en haut
-
         else if(k==2){posY=Map.getHauteur()-2,posX=(Map.getLongueur())/2;} // on vient d'en haut, on cree le joueur en bas
-
         else if(k==3){posY=(Map.getHauteur())/2,posX=1;}//... de droite,... a droite
-
         else if(k==4){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())-2;}//... de gauche,... a gauche
-
         else if(k==-1){posY=(Map.getHauteur())/2,posX=(Map.getLongueur())/2;}
 
         O->pos = Pos(posY, posX);
         Board board = Board(&Map, O);
-        k = 0;
-        while (k == 0) {
+        do {
             system("CLS");
             cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
             board.printMap();
             k = board.playTurn();
             turn ++;
-        }
+        }while (k == 0);
+
+        if (nbDeChargeur < O->getTeleportsLeft() && k!=-1)
+            this->addChargRamasse();
+        else if (nbDeChargeur == O->getTeleportsLeft() && k==-1)
+            this->addChargRamasse();
+
         switch (k) {
         case 1:
             this->deplacementMiniMapBas();
@@ -134,6 +138,34 @@ int Jeu::getPosXJoueur()
 int Jeu::getPosYJoueur()
 {
     return m_posYj;
+}
+
+bool Jeu::presenceDeCle()
+{
+    bool cle = false;
+    if(getValeurMiniMap(getPosYJoueur()+1,getPosXJoueur())!=0 && getValeurMiniMap(getPosYJoueur()-1,getPosXJoueur())!=0 &&
+       getValeurMiniMap(getPosYJoueur(),getPosXJoueur()+1)!=0 && getValeurMiniMap(getPosYJoueur(),getPosXJoueur()-1)!=0) //si les map au alentour on deja ete visite, la cle est inutile
+    {
+        cle = true;
+    }
+    return cle;
+}
+
+bool Jeu::chargeurRamasse()
+{
+    bool chargeur = false;
+    int LongM_Chargeur=m_chargeur.size();
+    for (int i=0;i<LongM_Chargeur;i++)
+    {
+        if(m_chargeur[i].y == getPosXJoueur() && m_chargeur[i].x == getPosYJoueur())
+            chargeur = true;
+    }
+    return chargeur;
+}
+
+void Jeu::addChargRamasse()
+{
+    m_chargeur.push_back(Pos(getPosYJoueur(),getPosXJoueur()));
 }
 
 std::string Jeu::getNomMap() //permet de savoir sur quelle map est le joueur

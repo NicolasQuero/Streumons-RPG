@@ -14,9 +14,10 @@ class Entity
 {
 
 protected:
+
+    char type;
     const static Pos DEPLACEMENTS_POS[];
     int hp, dmg;
-    char type;
     bool is_alive;
 
 public:
