@@ -33,13 +33,11 @@ void Oueurj::act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vec
         gameMap.prendreCle();
         gameMap.creaPorte(1);
         gameMap.modifierValeurGameMap(' ', J->pos.x, J->pos.y);
-        //charMap[J.pos.x][J.pos.y] = ' ';
     }
     else if (charMap[J->pos.x][J->pos.y] == 'C') {
         this->addTeleport();
         gameMap.modifierValeurGameMap(' ', J->pos.x, J->pos.y);
     }
-
 }
 
 /*bool Oueurj::quitGame() const {
@@ -103,9 +101,7 @@ void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<E
                 else
                     cout << "Vous avez été vaincu..." << endl;
             }
-
         }
-
         else
             cout << "COULDN'T MOVE" << endl;
     }

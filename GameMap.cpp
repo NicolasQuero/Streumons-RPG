@@ -71,21 +71,47 @@ Pos GameMap::getPortesPos(char c) {
         return Pos(getHauteur()/2, 0);
         break;
     }
+    return Pos(-1,-1);
 }
 
+//C:\Users\user\Desktop\Streumons-RPG-master\GameMap.cpp
 Pos GameMap::getClePos()
 {
     Pos posCle;
     for(int i=0; i<this->getHauteur(); i++)
     {
         for(int j=0; j <this->getLongueur();j++)
-            if(mapStrings[i][j]=='D'){posCle=(j,i);}
+            if(mapStrings[i][j]=='D'){posCle=Pos(j,i);}
     }
+    return posCle;
+}
+
+Pos GameMap::getChargPos()
+{
+    Pos posCharg;
+    for(int i=0; i<this->getHauteur(); i++)
+    {
+        for(int j=0; j <this->getLongueur();j++)
+            if(mapStrings[i][j]=='C'){posCharg=Pos(j,i);}
+    }
+    return posCharg;
 }
 
 void GameMap::modifierValeurGameMap(char a, int posY,int posX) // modifie le charactere en X Y par 'a'
 {
     this->mapStrings[posY][posX]=a;
+}
+
+void GameMap::enleverCle(bool cle)
+{
+    if (cle ==true)
+        modifierValeurGameMap(' ',getClePos().y,getClePos().x);
+}
+
+void GameMap::enlverCharg(bool charg)
+{
+    if (charg == true)
+        modifierValeurGameMap(' ',getChargPos().y,getChargPos().x);
 }
 
 bool GameMap::CleObtenu()

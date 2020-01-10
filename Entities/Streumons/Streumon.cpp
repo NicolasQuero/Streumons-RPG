@@ -30,4 +30,5 @@ bool Streumon::moveBy(Pos movement, Entity *J, vector<vector<char>> &charMap, ve
 bool Streumon::moveMonsterAtRandom(Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     int rand9 = rand()%9;
     moveBy(DEPLACEMENTS_POS[rand9], J, charMap, streumons);
+    return true;
 }
