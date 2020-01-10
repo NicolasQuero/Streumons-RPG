@@ -31,7 +31,8 @@ Jeu::Jeu()
 }
 
 void Jeu::startGame() {
-
+    TextOutput storyText = TextOutput();
+    TextOutput::setText("Bienvenue dans Streumons RPG !\n");
     int k=-1;//definit d'ou on viens
     int turn = 0;
     Oueurj *O = new Oueurj();
@@ -58,6 +59,7 @@ void Jeu::startGame() {
             system("CLS");
             cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
             board.printMap();
+            manageStoryText();
             k = board.playTurn();
             turn ++;
         }while (k == 0);
@@ -184,6 +186,7 @@ void Jeu::deplacementMiniMapGauche()
     m_miniMap[m_posYj][m_posXj]=1; // le joueur n'est plus sur la map,mais elle a ete visite
     m_miniMap[m_posYj][m_posXj-1]=2; //nouvelle map ou est le joueur
     m_posXj=m_posXj-1; //changement des coordonnees du joueur
+    TextOutput::setText("Vous vous déplacez vers la map de gauche.\n");
 }
 
 void Jeu::deplacementMiniMapDroite()
@@ -191,6 +194,7 @@ void Jeu::deplacementMiniMapDroite()
     m_miniMap[m_posYj][m_posXj]=1;
     m_miniMap[m_posYj][m_posXj+1]=2;
     m_posXj=m_posXj+1;
+    TextOutput::setText("Vous vous déplacez vers la map de droite.\n");
 }
 
 void Jeu::deplacementMiniMapHaut()
@@ -198,6 +202,7 @@ void Jeu::deplacementMiniMapHaut()
     m_miniMap[m_posYj][m_posXj]=1;
     m_miniMap[m_posYj-1][m_posXj]=2;
     m_posYj=m_posYj-1;
+    TextOutput::setText("Vous vous déplacez vers la map du haut.\n");
 }
 
 void Jeu::deplacementMiniMapBas()
@@ -205,6 +210,7 @@ void Jeu::deplacementMiniMapBas()
     m_miniMap[m_posYj][m_posXj]=1;
     m_miniMap[m_posYj+1][m_posXj]=2;
     m_posYj=m_posYj+1;
+    TextOutput::setText("Vous vous déplacez vers la map du bas.\n");
 }
 
 std::vector<int> Jeu::MapVisite()
@@ -292,5 +298,12 @@ void Jeu::afficherSchemaJeu()
         std::cout<<"   "<<y<<std::endl;
     }
     std::cout<<std::endl<<std::endl;
+}
+
+void Jeu::manageStoryText() {
+    if (!TextOutput::isEmpty()) {
+        cout << endl << storyText;
+        TextOutput::clearText();
+    }
 }
 

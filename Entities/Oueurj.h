@@ -1,12 +1,14 @@
 #ifndef OUEURJ_H_INCLUDED
 #define OUEURJ_H_INCLUDED
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "Entity.h"
 #include "Pos.h"
 #include "../GameMap.h"
 #include "../Combat.h"
+
 
 using namespace std;
 
@@ -18,6 +20,7 @@ private:
     int mp, power, score;
     int teleportsLeft;
     bool wantsTeleport;
+    bool didMonsterDie(Entity *M);
 public:
     Oueurj();
     Oueurj(Pos p);

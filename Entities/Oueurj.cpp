@@ -33,10 +33,12 @@ void Oueurj::act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vec
         gameMap.prendreCle();
         gameMap.creaPorte(1);
         gameMap.modifierValeurGameMap(' ', J->pos.x, J->pos.y);
+        TextOutput::addText("Vous obtenez le diamant ! Les portes s'ouvrent...\n");
     }
     else if (charMap[J->pos.x][J->pos.y] == 'C') {
         this->addTeleport();
         gameMap.modifierValeurGameMap(' ', J->pos.x, J->pos.y);
+        TextOutput::addText("Vous obtenez un Chargeur ! Vous gagnez une téléportation.\n");
     }
 }
 
@@ -74,6 +76,7 @@ bool Oueurj::manageChoice(string choice, vector<vector<char>> &charMap, vector<E
     }
     else if (choice[0] == 't' || choice [0] == 'T') {
         wantsTeleport = true;
+        TextOutput::addText("Vous vous téléportez... Mais où ?\n");
         return true;
     }
     return false;
@@ -143,19 +146,27 @@ bool Oueurj::playCombatTurn(Entity *M) { // Method managing the turn of the play
         switch ( attackChoice ) {
             case 'n': {
                 attack(M); // Normal attack designed in the Entity class
-                return M->isAlive(); // This attack cannot fail so no need to check if it returns true
+                return didMonsterDie(M);
             }
             case 'p': {
                 if ( powerAttack(M) ) // More powerful attack
-                    return M->isAlive();
+                    return didMonsterDie(M);
             }
             case 's': {
                 if ( heal() ) // Heal the player
-                    return true;
+                    return true; // The monster can't die here normally
             }
         }
     }
     return false;
+}
+
+bool Oueurj::didMonsterDie(Entity *M) {
+    if (!M->isAlive()) {
+        string text = "Vous venez de vaincre un monstre de type "; text += M->getType(); text += " ! ("; text += to_string(hp); text += " HP restants)\n";
+        TextOutput::addText(text);
+    }
+    return M->isAlive();
 }
 
 bool Oueurj::powerAttack(Entity *M) {

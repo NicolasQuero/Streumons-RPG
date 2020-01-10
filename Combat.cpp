@@ -4,11 +4,6 @@ Combat::Combat(Entity *J, Entity *M) : J(J), M(M), keepFighting(true) {
 
 }
 
-bool Combat::playCombatTurn() {
-    return true;
-    //J->playCombatTurn()
-}
-
 bool Combat::startCombat() {
     cout << "Le combat entre " << J->getType() << " et " << M->getType() << " commence !" << endl << endl;
     cout << J->getType() << " a " << J->getHp() << " HP." << endl;
