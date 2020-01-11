@@ -8,6 +8,7 @@
 #include "Pos.hpp"
 #include "../GameMap.hpp"
 #include "../Combat.hpp"
+#include "../TextOutput.hpp"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ private:
     int mp, power, score;
     int teleportsLeft;
     bool wantsTeleport;
+    bool didMonsterDie(Entity *M);
 public:
     Oueurj();
     Oueurj(Pos p);

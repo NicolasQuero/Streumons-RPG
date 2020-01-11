@@ -47,6 +47,8 @@ public:
     void afficherMiniMap2(); //permet de voir les "dessous de la map" (inutile dans le jeu)
     void afficherMiniMap(); // permet d'afficher la miniMap pour le joueur
     void afficherSchemaJeu(); //permet d'afficher le miniMap entiere
+
+    void manageStoryText();
 };
 
 

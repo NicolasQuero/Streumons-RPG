@@ -26,7 +26,7 @@ bool Combat::startCombat() {
 }
 
 void Combat::printCombatInterface() const {
-    system("CLS");
+	std::system("clear");
     cout << "     ----------------- " << endl;
     cout << "     | COMBAT " << J->getType() << " vs " << M->getType() << " |" << endl;
     cout << "     ----------------- " << endl << endl;

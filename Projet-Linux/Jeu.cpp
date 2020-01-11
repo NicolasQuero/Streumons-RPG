@@ -55,9 +55,10 @@ void Jeu::startGame() {
         O->pos = Pos(posY, posX);
         Board board = Board(&Map, O);
         do {
-            system("clear");
+            std::system("clear");
             cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
             board.printMap();
+            manageStoryText();
             k = board.playTurn();
             turn ++;
         }while (k == 0);
@@ -295,6 +296,13 @@ void Jeu::afficherSchemaJeu()
         std::cout<<"   "<<y<<std::endl;
     }
     std::cout<<std::endl<<std::endl;
+}
+
+void Jeu::manageStoryText() {
+    if (!TextOutput::isEmpty()) {
+        cout << endl << TextOutput::getText();
+        TextOutput::clearText();
+    }
 }
 
 

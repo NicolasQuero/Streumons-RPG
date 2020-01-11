@@ -1,0 +1,140 @@
+# depslib dependency file v1.0
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Board.cpp
+	"Board.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Board.h
+	<iostream>
+	<vector>
+	<algorithm>
+	"GameMap.h"
+	"Entities/Entity.h"
+	"Entities/Oueurj.h"
+	"Entities/Streumons/Streumon.h"
+	"Entities/Streumons/Monster_s.h"
+	"Entities/Streumons/Monster_o.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/GameMap.h
+	<iostream>
+	<fstream>
+	<vector>
+	"Jeu.h"
+	"Entities/Pos.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Jeu.h
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+	<cstdlib>
+	<time.h>
+	"Entities/Pos.h"
+	"FonctionUtile.h"
+	"TextOutput.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Entities/Pos.h
+	<iostream>
+	<string>
+	<math.h>
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/FonctionUtile.h
+	<iostream>
+	<string>
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/TextOutput.h
+	<iostream>
+	<string>
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Entities/Entity.h
+	<vector>
+	<string>
+	<iostream>
+	"Pos.h"
+	"../GameMap.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Entities/Oueurj.h
+	<iostream>
+	<string>
+	<vector>
+	"Entity.h"
+	"Pos.h"
+	"../GameMap.h"
+	"../Combat.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Combat.h
+	<iostream>
+	<cstdlib>
+	<unistd.h>
+	"Entities/Entity.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Entities/Streumons/Streumon.h
+	<iostream>
+	<vector>
+	"../Pos.h"
+	"../Entity.h"
+	"../../Combat.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Entities/Streumons/Monster_s.h
+	<iostream>
+	<vector>
+	"Streumon.h"
+	"../Oueurj.h"
+	"../Entity.h"
+
+1578776918 /home/nicolas/.ssh/Streumons-RPG/Entities/Streumons/Monster_o.h
+	<iostream>
+	<stdlib.h>
+	"Streumon.h"
+	"../Oueurj.h"
+	"../Entity.h"
+	"../Pos.h"
+	"../../Combat.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Combat.cpp
+	"Combat.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Animations/Animation.cpp
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Animations/Frame.cpp
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Entity.cpp
+	"Entity.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Oueurj.cpp
+	"Oueurj.h"
+	"../Board.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Pos.cpp
+	"Pos.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Streumons/Monster_o.cpp
+	"Monster_o.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Streumons/Monster_s.cpp
+	"Monster_s.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Entities/Streumons/Streumon.cpp
+	"Streumon.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/FonctionUtile.cpp
+	"FonctionUtile.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/GameMap.cpp
+	"GameMap.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/Jeu.cpp
+	"Jeu.h"
+	"Entities/Oueurj.h"
+	"Board.h"
+	"GameMap.h"
+
+1578776918 source:/home/nicolas/.ssh/Streumons-RPG/main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	"Jeu.h"
+	"Entities/Oueurj.h"
+	"Board.h"
+	"GameMap.h"
+	"Entities/Pos.h"
+	<windows.h>
+
