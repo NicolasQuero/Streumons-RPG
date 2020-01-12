@@ -84,7 +84,7 @@ void Animation::printAnimation(int attackerLocation) const {
                 }
                 for (int i = 0; i < frame.getNbLines(); i++) {
                     string output = " ";
-                    for (int j = lineSize; j > 1; j--) {
+                    for (int j = lineSize; j > 0; j--) {
                         if (frame.getLine(i)[j] == ' ')
                             output += background.getLine(i)[lineSize - j];
                         else
