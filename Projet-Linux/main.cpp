@@ -7,8 +7,6 @@
 #include "Board.hpp"
 #include "GameMap.hpp"
 #include "Entities/Pos.hpp"
-//#include <windows.h>
-//#pragma execution_character_set( "utf-8" )
 
 using namespace std;
 

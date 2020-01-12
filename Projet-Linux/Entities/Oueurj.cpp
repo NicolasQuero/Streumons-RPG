@@ -95,6 +95,7 @@ void Oueurj::movePlayer(int deplacement, vector<vector<char>> &charMap, vector<E
                 cout << "Monstre " << streumons[monsterIndex]->getType() << " rencontré !" << endl;
                 Combat combat = Combat(this, streumons[monsterIndex]);
                 combat.startCombat();
+                cout << "COMBAT FINI" << endl;
                 if (this->isAlive()) {
                     pos = targetPos;
                     streumons.erase(streumons.begin() + monsterIndex);

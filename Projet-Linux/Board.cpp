@@ -64,14 +64,9 @@ void Board::actualiseMap(GameMap *gamemap_)
 char Board::getCharAt(int &x, int &y) const { return charMap[x][y]; }
 
 void Board::printMap() const {
-    /*cout << J.pos.x << ", " << J.pos.y << endl;
-    for (Streumon* monster : monstersOnMap) {
-        cout << monster->pos.x << ", " << monster->pos.y << " " << monster->getType() << endl;
-    }*/
     int row = 0;
     for (vector<char> line : charMap) {
         int col = 0;
-        //printCoordinatesAroundTheMap(charMap, row, col); // print coordinates around the map
         for (char c : line) {
             bool monsterFound = false;
             for (Entity* monster : monstersOnMap) {
@@ -91,7 +86,7 @@ void Board::printMap() const {
         row++;
         cout << endl;
     }
-      cout  << "-HP : " << J->getHp()<< "    -Téléportations : " << J->getTeleportsLeft()<< "    -Score : " << J->getScore()<< endl;
+      cout  << "- HP : " << J->getHp()<< "    - Téléportations : " << J->getTeleportsLeft()<< "    - Score : " << J->getScore()<< endl;
 }
 
 void Board::printInformation(int &row) const {

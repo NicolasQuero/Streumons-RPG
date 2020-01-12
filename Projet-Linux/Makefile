@@ -2,8 +2,8 @@ CPP=g++ --std=c++11 -Wall
 
 all : Game
 
-Game : main.o Board.o Combat.o FonctionUtile.o GameMap.o Jeu.o Entity.o Oueurj.o Pos.o Monster_o.o Monster_s.o Streumon.o TextOutput.o
-	$(CPP) -o Game main.o Board.o Combat.o FonctionUtile.o GameMap.o Jeu.o Entity.o Oueurj.o Pos.o Monster_o.o Monster_s.o Streumon.o TextOutput.o
+Game : main.o Board.o Combat.o FonctionUtile.o GameMap.o Jeu.o Entity.o Oueurj.o Pos.o Monster_o.o Monster_s.o Streumon.o TextOutput.o Animation.o Frame.o
+	$(CPP) -o Game main.o Board.o Combat.o FonctionUtile.o GameMap.o Jeu.o Entity.o Oueurj.o Pos.o Monster_o.o Monster_s.o Streumon.o TextOutput.o Animation.o Frame.o
 
 main.o : main.cpp
 	$(CPP) -o main.o -c main.cpp
@@ -43,6 +43,12 @@ Streumon.o : Entities/Streumons/Streumon.o
 
 TextOutput.o : TextOutput.cpp
 	$(CPP) -o TextOutput.o -c TextOutput.cpp
+
+Animation.o : Entities/Animations/Animation.cpp
+	$(CPP) -o Animation.o -c Entities/Animations/Animation.cpp
+
+Frame.o : Entities/Animations/Frame.cpp
+	$(CPP) -o Frame.o -c Entities/Animations/Frame.cpp
 
 clean :
 	rm *.o

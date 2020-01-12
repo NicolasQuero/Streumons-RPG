@@ -1,9 +1,9 @@
 #include "Combat.hpp"
 
-
+using namespace std;
 
 Combat::Combat(Entity *J, Entity *M) : J(J), M(M), keepFighting(true) {
-
+    loadCombatAnimations();
 }
 
 bool Combat::playCombatTurn() {
@@ -25,22 +25,39 @@ bool Combat::startCombat() {
     return J->isAlive();
 }
 
-void Combat::printCombatInterface() const {
+void Combat::printCombatInterface() {
 	std::system("clear");
+	Frame combat_background = Frame();
     cout << "     ----------------- " << endl;
     cout << "     | COMBAT " << J->getType() << " vs " << M->getType() << " |" << endl;
     cout << "     ----------------- " << endl << endl;
-    cout << "  -------------------------" << endl;
-    cout << "  -                       -" << endl;
-    cout << "  -                       -" << endl;
-    cout << "  -      " << J->getType() << "         " << M->getType() << "      -" << endl;
-    cout << "  -                       -" << endl;
-    cout << "      " << "HP : " << J->getHp() << "   HP : " << M->getHp() << "    " << endl;
-    if (J->getType() == 'j')
-        cout << "      " << "MP : " << J->getMp() << "   " << endl;
-    else if (M->getType() == 'j')
-        cout << "                MP : " << M->getMp() << "   " << endl;
-    cout << "  -                       -" << endl;
-    cout << "  -                       -" << endl;
-    cout << "  -------------------------" << endl;
+    string edge = "  -------------------------";
+    string inside = "  -                       -";
+    string types = string("  -      ") + J->getType() + "         " + M->getType() + "      -";
+    string hpinfo = string("      HP : ") + to_string(J->getHp()) + "   HP : " + to_string(M->getHp()) + "    ";
+    combat_background.addLine(edge);
+    combat_background.addLine(inside);
+    combat_background.addLine(inside);
+    combat_background.addLine(types);
+    combat_background.addLine(inside);
+    combat_background.addLine(hpinfo);
+    if (J->getType() == 'j') {
+        string mpinfo = string("      MP : ") + to_string(J->getMp()) + "               ";
+        combat_background.addLine(mpinfo);
+    }
+    else if (M->getType() == 'j') {
+        string mpinfo = "                MP : " + to_string(M->getMp()) + "     ";
+        combat_background.addLine(mpinfo);
+    }
+    combat_background.addLine(inside);
+    combat_background.addLine(inside);
+    combat_background.addLine(edge);
+    basicAttack.setBackground(combat_background);
+
+    basicAttack.printAnimation();
+}
+
+void Combat::loadCombatAnimations() {
+    string basic_attack_path = "Entities/Animations/Attacks/basic_attack";
+    basicAttack = Animation(100000, basic_attack_path);
 }
