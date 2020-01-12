@@ -12,7 +12,7 @@ private:
     Entity *M;
     bool keepFighting;
     bool playCombatTurn(); // returns true if the player is still alive
-    Animation basicAttack, powerAttack;// heal;
+    Animation basicAttack, powerAttack, heal;
     Frame combat_background;
     void loadCombatAnimations();
     void loadCombatBackground();

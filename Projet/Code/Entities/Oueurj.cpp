@@ -189,6 +189,7 @@ bool Oueurj::heal() {
         if (hp > HP_MAX)
             hp = HP_MAX;
         cout << " Vous vous soignez, vous avez désormais " << hp << " points de vie" << endl;
+        setAttackInUse('s');
         return true;
     }
     else {

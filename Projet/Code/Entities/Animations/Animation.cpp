@@ -83,12 +83,12 @@ void Animation::printAnimation(int attackerLocation) const {
                     }
                 }
                 for (int i = 0; i < frame.getNbLines(); i++) {
-                    string output = " ";
-                    for (int j = lineSize; j > 0; j--) {
-                        if (frame.getLine(i)[j] == ' ')
+                    string output = "  ";
+                    for (int j = lineSize - 1; j > 0; j--) {
+                        if (frame.getLine(i)[j+1] == ' ' && background.getNbLines() >= i)
                             output += background.getLine(i)[lineSize - j];
                         else
-                            output += frame.getLine(i)[j];
+                            output += frame.getLine(i)[j+1];
                     }
                     cout << output << endl;
                 }
@@ -101,5 +101,4 @@ void Animation::printAnimation(int attackerLocation) const {
 Animation::~Animation() {
     frames.clear();
     frames.shrink_to_fit();
-    cout << "Animation détruite" << endl;
 }

@@ -6,6 +6,7 @@ using namespace std;
 Streumon::Streumon(char monsterLetter, int x, int y, int hp, int dmg) : Entity(monsterLetter, x, y, hp, dmg) {}
 
 bool Streumon::moveBy(Pos movement, Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
+
     if (this->isAlive()) {
         Pos targetPos = this->pos + movement;
         if ( charMap[targetPos.x][targetPos.y] == '#' || charMap[targetPos.x][targetPos.y] == 'X') { // WALL DETECTED
@@ -26,6 +27,8 @@ bool Streumon::moveBy(Pos movement, Entity *J, vector<vector<char>> &charMap, ve
         }
         this->pos += movement; // NO COLLISION, MOVEMENT IS DONE
     }
+    else
+        cout << "Type : " << type << " | HP : " << hp << endl;
     return true;
 }
 
