@@ -78,7 +78,7 @@ void Combat::loadCombatBackground() {
     combat_background.addLine(inside);
     combat_background.addLine(hpinfo);
     if (J->getType() == 'j') {
-        string mpinfo = string("      MP : ") + to_string(J->getMp()) + "               ";
+        string mpinfo = "      MP : " + to_string(J->getMp()) + "               ";
         combat_background.addLine(mpinfo);
     }
     else if (M->getType() == 'j') {

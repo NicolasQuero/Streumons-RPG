@@ -1,65 +1,194 @@
-==12829== Memcheck, a memory error detector
-==12829== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==12829== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==12829== Command: ./gp
-==12829== Parent PID: 5819
-==12829== 
-==12829== Invalid read of size 8
-==12829==    at 0x11F704: std::vector<char, std::allocator<char> >::operator[](unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x120329: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x11FFFD: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x11FF15: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x1189DE: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==  Address 0x5b94fb8 is 24 bytes before a block of size 384 alloc'd
-==12829==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==12829==    by 0x110EAE: __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x1106D6: std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::allocate(std::allocator<std::vector<char, std::allocator<char> > >&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10FC47: std::_Vector_base<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10E807: void std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_realloc_insert<std::vector<char, std::allocator<char> > const&>(__gnu_cxx::__normal_iterator<std::vector<char, std::allocator<char> >*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > > >, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10D7B7: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10C1D1: Board::Board(GameMap*, Oueurj*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x118934: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829== 
-==12829== Invalid read of size 1
-==12829==    at 0x12032A: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x11FFFD: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x11FF15: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x1189DE: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==  Address 0x8 is not stack'd, malloc'd or (recently) free'd
-==12829== 
-==12829== 
-==12829== Process terminating with default action of signal 11 (SIGSEGV)
-==12829==  Access not within mapped region at address 0x8
-==12829==    at 0x12032A: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x11FFFD: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x11FF15: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x1189DE: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
-==12829==  If you believe this happened as a result of a stack
-==12829==  overflow in your program's main thread (unlikely but
-==12829==  possible), you can try to increase the size of the
-==12829==  main thread stack using the --main-stacksize= flag.
-==12829==  The main thread stack size used in this run was 8388608.
-==12829== 
-==12829== HEAP SUMMARY:
-==12829==     in use at exit: 2,176 bytes in 28 blocks
-==12829==   total heap usage: 2,962 allocs, 2,934 frees, 144,201 bytes allocated
-==12829== 
-==12829== LEAK SUMMARY:
-==12829==    definitely lost: 0 bytes in 0 blocks
-==12829==    indirectly lost: 0 bytes in 0 blocks
-==12829==      possibly lost: 0 bytes in 0 blocks
-==12829==    still reachable: 2,176 bytes in 28 blocks
-==12829==         suppressed: 0 bytes in 0 blocks
-==12829== Reachable blocks (those to which a pointer was found) are not shown.
-==12829== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==12829== 
-==12829== For counts of detected and suppressed errors, rerun with: -v
-==12829== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==15603== Memcheck, a memory error detector
+==15603== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==15603== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==15603== Command: ./gp
+==15603== Parent PID: 5819
+==15603== 
+==15603== Invalid read of size 1
+==15603==    at 0x1202CA: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60f6cea is 0 bytes after a block of size 10 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x10F07F: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10DF22: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10F1C1: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FFB2: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10EBB6: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D9E4: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FA4F: void __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E73C: void std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::allocator<std::vector<char, std::allocator<char> > >&, std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D77F: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C72C: Board::actualiseMap(GameMap*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== Invalid read of size 1
+==15603==    at 0x120300: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60f6cea is 0 bytes after a block of size 10 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x10F07F: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10DF22: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10F1C1: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FFB2: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10EBB6: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D9E4: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FA4F: void __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E73C: void std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::allocator<std::vector<char, std::allocator<char> > >&, std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D77F: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C72C: Board::actualiseMap(GameMap*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== Invalid read of size 1
+==15603==    at 0x1202CA: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60f826b is 1 bytes after a block of size 10 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x10F07F: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10DF22: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10F1C1: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FFB2: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10EBB6: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D9E4: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FA4F: void __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E73C: void std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::allocator<std::vector<char, std::allocator<char> > >&, std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D77F: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C72C: Board::actualiseMap(GameMap*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== Invalid read of size 1
+==15603==    at 0x120300: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60f826b is 1 bytes after a block of size 10 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x10F07F: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10DF22: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10F1C1: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FFB2: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10EBB6: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D9E4: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FA4F: void __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E73C: void std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::allocator<std::vector<char, std::allocator<char> > >&, std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D77F: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C72C: Board::actualiseMap(GameMap*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== Invalid read of size 1
+==15603==    at 0x1202CA: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60fc2eb is 1 bytes after a block of size 10 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x10F07F: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10DF22: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10F1C1: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FFB2: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10EBB6: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D9E4: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FA4F: void __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E73C: void std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::allocator<std::vector<char, std::allocator<char> > >&, std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D77F: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C72C: Board::actualiseMap(GameMap*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== Invalid read of size 1
+==15603==    at 0x120300: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FFEF: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60fc2eb is 1 bytes after a block of size 10 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x10F07F: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10DF22: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10F1C1: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FFB2: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10EBB6: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D9E4: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FA4F: void __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E73C: void std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::allocator<std::vector<char, std::allocator<char> > >&, std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D77F: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C72C: Board::actualiseMap(GameMap*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== Invalid read of size 8
+==15603==    at 0x11F694: std::vector<char, std::allocator<char> >::operator[](unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x1202C9: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  Address 0x60efac8 is 24 bytes before a block of size 384 alloc'd
+==15603==    at 0x4C3017F: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15603==    by 0x110EAE: __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::allocate(unsigned long, void const*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x1106D6: std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::allocate(std::allocator<std::vector<char, std::allocator<char> > >&, unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10FC47: std::_Vector_base<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_allocate(unsigned long) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10E807: void std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_realloc_insert<std::vector<char, std::allocator<char> > const&>(__gnu_cxx::__normal_iterator<std::vector<char, std::allocator<char> >*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > > >, std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10D7B7: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::push_back(std::vector<char, std::allocator<char> > const&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C4B7: Board::setCharMaps(GameMap&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10C1D1: Board::Board(GameMap*, Oueurj*) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x1188C4: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603== 
+==15603== 
+==15603== Process terminating with default action of signal 11 (SIGSEGV)
+==15603==  Access not within mapped region at address 0x9
+==15603==    at 0x1202CA: Streumon::moveBy(Pos, Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FF9D: Monster_s::moveMonster(Entity*, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11FEB5: Monster_s::act(Entity*, GameMap&, std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >&, std::vector<Entity*, std::allocator<Entity*> >&) (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10CD66: Board::playTurn() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x11896E: Jeu::startGame() (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==    by 0x10B613: main (in /home/nicolas/.ssh/Streumons-RPG/Projet/gp)
+==15603==  If you believe this happened as a result of a stack
+==15603==  overflow in your program's main thread (unlikely but
+==15603==  possible), you can try to increase the size of the
+==15603==  main thread stack using the --main-stacksize= flag.
+==15603==  The main thread stack size used in this run was 8388608.
+==15603== 
+==15603== HEAP SUMMARY:
+==15603==     in use at exit: 2,192 bytes in 29 blocks
+==15603==   total heap usage: 58,427 allocs, 58,398 frees, 1,856,929 bytes allocated
+==15603== 
+==15603== LEAK SUMMARY:
+==15603==    definitely lost: 0 bytes in 0 blocks
+==15603==    indirectly lost: 0 bytes in 0 blocks
+==15603==      possibly lost: 0 bytes in 0 blocks
+==15603==    still reachable: 2,192 bytes in 29 blocks
+==15603==         suppressed: 0 bytes in 0 blocks
+==15603== Reachable blocks (those to which a pointer was found) are not shown.
+==15603== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==15603== 
+==15603== For counts of detected and suppressed errors, rerun with: -v
+==15603== ERROR SUMMARY: 16 errors from 7 contexts (suppressed: 0 from 0)

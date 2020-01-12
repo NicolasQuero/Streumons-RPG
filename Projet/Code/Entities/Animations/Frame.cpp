@@ -1,7 +1,7 @@
 #include "Frame.hpp"
 
-Frame::Frame() {
-    nbLines = 0;
+Frame::Frame() : frameStrings(), nbLines(0) {
+
 }
 
 Frame::Frame(int nbLines, int lineSize) : nbLines(nbLines) {

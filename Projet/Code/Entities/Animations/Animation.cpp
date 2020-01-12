@@ -1,5 +1,5 @@
 #include "Animation.hpp"
-
+#include <string>
 using namespace std;
 
 const int Animation::lineSize = 27;
@@ -7,9 +7,7 @@ const int Animation::nbLines = 10;
 
 Animation::Animation() {};
 
-Animation::Animation(int _timePerFrame, string animationPath) : timePerFrame(_timePerFrame), background_set(false), header_set(false) {
-    frames = vector<Frame>();
-    header = Frame();
+Animation::Animation(int _timePerFrame, string animationPath) : timePerFrame(_timePerFrame), frames(), background_set(false), header_set(false) {
     loadAnimation(animationPath);
 
 }
@@ -33,7 +31,7 @@ void Animation::loadAnimation(string path) {
     ifstream file(path);
     if (file.is_open()) {
         cout << "FILE OPEN" << endl;
-        string line;
+        string line = "";
         int frameNb = 0;
         Frame frame = Frame();
         while (getline(file, line)) {
@@ -62,7 +60,7 @@ void Animation::printAnimation(int attackerLocation) const {
                         cout << header.getLine(i) << endl;
                     }
                 }
-                for (int i = 0; i < nbLines; i++) {
+                for (int i = 0; i < frame.getNbLines(); i++) {
                     for (int j = 0; j < lineSize; j++) {
                         if (frame.getLine(i)[j] == ' ')
                             cout << background.getLine(i)[j];
@@ -84,9 +82,9 @@ void Animation::printAnimation(int attackerLocation) const {
                         cout << header.getLine(i) << endl;
                     }
                 }
-                for (int i = 0; i < nbLines; i++) {
+                for (int i = 0; i < frame.getNbLines(); i++) {
                     string output = " ";
-                    for (int j = lineSize; j > 0; j--) {
+                    for (int j = lineSize; j > 1; j--) {
                         if (frame.getLine(i)[j] == ' ')
                             output += background.getLine(i)[lineSize - j];
                         else
