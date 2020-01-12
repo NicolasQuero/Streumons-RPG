@@ -143,5 +143,5 @@ Board::~Board() {
     for (Entity* monster : monstersOnMap) {
         delete monster;
     }
-    vector<Entity*>().swap(monstersOnMap); // On libère la mémoire de monstersOnMap
+    monstersOnMap.shrink_to_fit(); // On libère la mémoire de monstersOnMap
 }

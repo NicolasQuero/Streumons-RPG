@@ -9,7 +9,8 @@ const double Monster_o::DETECTION_RADIUS = 12;
 Monster_o::Monster_o(int x, int y) : Streumon('o', x, y, HP_MAX, BASE_DMG) {}
 
 void Monster_o::act(Entity *J, GameMap &gameMap, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
-    moveMonster(J, charMap, streumons);
+    if (this->isAlive())
+        moveMonster(J, charMap, streumons);
 }
 
 void Monster_o::moveMonster(Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {

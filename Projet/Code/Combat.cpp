@@ -88,6 +88,7 @@ void Combat::loadCombatBackground() {
     combat_background.addLine(inside);
     combat_background.addLine(inside);
     combat_background.addLine(edge);
+    combat_background.addLine("                           ");
 }
 
 Combat::~Combat() {

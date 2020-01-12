@@ -18,5 +18,4 @@ Frame::Frame(int nbLines, int lineSize) : nbLines(nbLines) {
 Frame::~Frame() {
     frameStrings.clear();
     frameStrings.shrink_to_fit();
-    cout << "Frame détruite" << endl;
 }
