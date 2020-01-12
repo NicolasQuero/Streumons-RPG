@@ -17,18 +17,8 @@ bool Monster_s::playCombatTurn(Entity *E) {
 
 void Monster_s::moveMonster(Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons)
 {
-    int val=0;
-    int rand2 = rand()%9;
     bool moved = false;
-    for(int i=-1;i<2;i++)
-    {
-        for(int j=-1;j<2;j++)
-        {
-            val++;
-            if(rand2==val)
-                moved=moveBy(Pos(i,j), J, charMap, streumons);
-        }
-    }
+    moved=moveMonsterAtRandom(J,charMap,streumons);
     if(!moved){moveMonster(J, charMap, streumons);}
 }
 

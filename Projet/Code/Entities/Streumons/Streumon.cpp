@@ -7,9 +7,13 @@ Streumon::Streumon(char monsterLetter, int x, int y, int hp, int dmg) : Entity(m
 
 bool Streumon::moveBy(Pos movement, Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     Pos targetPos = this->pos + movement;
+    int i=charMap.size();
+    int j=charMap[0].size();
     if ( charMap[targetPos.x][targetPos.y] == '#' || charMap[targetPos.x][targetPos.y] == 'X') { // WALL DETECTED
         return false;
     }
+    else if (targetPos.x==0||targetPos.y==0||targetPos.x==i-1||targetPos.y==j-1)
+        return false;
     else {
         for (Entity* streumon : streumons) {
             if (streumon->pos.y == targetPos.y && streumon->pos.x == targetPos.x) // OTHER MONSTER AT TARGET LOCATION
@@ -29,6 +33,5 @@ bool Streumon::moveBy(Pos movement, Entity *J, vector<vector<char>> &charMap, ve
 
 bool Streumon::moveMonsterAtRandom(Entity *J, vector<vector<char>> &charMap, vector<Entity*> &streumons) {
     int rand9 = rand()%9;
-    moveBy(DEPLACEMENTS_POS[rand9], J, charMap, streumons);
-    return true;
+    return moveBy(DEPLACEMENTS_POS[rand9], J, charMap, streumons);
 }
