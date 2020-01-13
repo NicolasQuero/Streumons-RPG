@@ -15,6 +15,12 @@ Frame::Frame(int nbLines, int lineSize) : nbLines(nbLines) {
     }
 }
 
+void Frame::printFrame() const {
+    for (string line : frameStrings) {
+        cout << line << endl;
+    }
+}
+
 Frame::~Frame() {
     frameStrings.clear();
     frameStrings.shrink_to_fit();

@@ -16,6 +16,11 @@ bool Combat::startCombat() {
     cout << J->getType() << " a " << J->getHp() << " HP." << endl;
     cout << M->getType() << " a " << M->getHp() << " HP." << endl;
     usleep(300000);
+    system("clear");
+    cout << "     ----------------- \n";
+    cout << "     | COMBAT " << J->getType() << " vs " << M->getType() << " |" << endl;
+    cout << "     ----------------- " << endl << endl;
+    combat_background.printFrame();
     while (keepFighting) {
         keepFighting = J->playCombatTurn(M); // playCombatTurn returns false if E died hence we stop the fight
         printCombatInterface(0);
