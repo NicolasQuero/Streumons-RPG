@@ -38,6 +38,7 @@ void Jeu::startGame() {
 
     int k=-1;//definit d'ou on viens
     int turn = 0;
+    cout << endl << "Vous vous reveillez en plein milieu d'une salle, votre but retrouver la sortie vivant !" << endl;
     cout << "comment voulez vous appeler votre personnage ?" << endl ;
     string nom;
     cin >> nom;
@@ -62,6 +63,7 @@ void Jeu::startGame() {
         Board board = Board(&Map, O);
         do {
             std::system("clear");
+	    this->afficherMiniMap();
             cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
             board.printMap();
             manageStoryText();
