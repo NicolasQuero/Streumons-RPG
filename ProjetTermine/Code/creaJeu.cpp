@@ -33,7 +33,7 @@ std::vector<std::string> creaJeu::afficherListeMap()
 {
     std::vector<std::string> listemap;
     std::cout<<"choisissez une map existante pour l'ajouter au Jeu"<<std::endl;
-    std::string MAP_PATH="ListeMap/ListeMap.txt";
+    std::string MAP_PATH="Code/ListeMap/ListeMap.txt";
     std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture la liste des nom de map et on affiche le nom des map existante.
     if(flux)
     {
@@ -292,7 +292,7 @@ void creaJeu::validationChoix(std::string Map,std::vector<std::vector<std::strin
 
 void creaJeu::enregistrerJeu()
 {
-    std::string directioncreaJeu ="JeuCree/Jeu.txt"; // on ouvre le repertoire ou on va enregistrer le creaJeu
+    std::string directioncreaJeu ="Code/JeuCree/Jeu.txt"; // on ouvre le repertoire ou on va enregistrer le creaJeu
     std::ofstream flux(directioncreaJeu.c_str());
     if(flux.is_open())
     {

@@ -21,7 +21,6 @@ public:
     void addCharBack(char c, int lineNb) { frameStrings[lineNb] += c; }
     string getLine(int i) const { return frameStrings[i]; }
     int getNbLines() const { return nbLines; }
-    void printFrame() const;
     ~Frame();
 
 

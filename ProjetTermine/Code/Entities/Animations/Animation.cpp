@@ -30,6 +30,7 @@ void Animation::addHeaderLine(string line) {
 void Animation::loadAnimation(string path) {
     ifstream file(path);
     if (file.is_open()) {
+        cout << "FILE OPEN" << endl;
         string line = "";
         int frameNb = 0;
         Frame frame = Frame();
@@ -46,7 +47,7 @@ void Animation::loadAnimation(string path) {
         nbFrames = frameNb;
     }
     else
-        cout << " FILE " << path << " COULD NOT OPEN" << endl;
+        cout << " FILE COULD NOT OPEN" << endl;
 }
 
 void Animation::printAnimation(int attackerLocation) const {

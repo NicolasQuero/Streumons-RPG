@@ -28,7 +28,7 @@ creaMap::creaMap()//cree la base de la map
 
 creaMap::creaMap(std::string nomMap)// cree une map a partir d'un fichier txt
 {
-    std::string MAP_PATH="Map/"+nomMap+".txt";
+    std::string MAP_PATH="Code/Map/"+nomMap+".txt";
     std::ifstream flux(MAP_PATH.c_str());
     if(flux)
     {
@@ -256,7 +256,7 @@ void creaMap::choixNomMap() const
 {
     std::cout<<"felicitation votre map est terminee"<<std::endl;
     bool i=false;
-    std::string liste="ListeMap/ListeMap.txt";
+    std::string liste="Code/ListeMap/ListeMap.txt";
     std::string nomMap;
         do
         {
@@ -285,7 +285,7 @@ void creaMap::choixNomMap() const
 
 void creaMap::enregistrerMap(std::string nomMap) const
 {
-    std::string liste="ListeMap/ListeMap.txt";
+    std::string liste="Code/ListeMap/ListeMap.txt";
     std::ofstream fluxIII(liste.c_str(), std::ios::app); //on ouvre le fichier en mode ecriture pour ajouter le nom de la nouvelle map a la liste de map
     if(fluxIII.is_open())
     {
@@ -294,7 +294,7 @@ void creaMap::enregistrerMap(std::string nomMap) const
     }
     else {std::cout << "ERREUR: Impossible d'ouvrir en ecriture le fichier de liste des nom de Map." << std::endl;}
 
-    std::ofstream flux(("Map/"+nomMap+".txt").c_str()); //on cree un nouveau txt pour enregistrer la map a l'interieur
+    std::ofstream flux(("Code/Map/"+nomMap+".txt").c_str()); //on cree un nouveau txt pour enregistrer la map a l'interieur
     if(flux.is_open())
     {
         for(int i(0);i< this->getHauteur();i++)

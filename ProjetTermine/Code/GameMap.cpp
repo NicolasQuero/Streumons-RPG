@@ -104,7 +104,7 @@ void GameMap::modifierValeurGameMap(char a, int posY,int posX) // modifie le cha
 
 void GameMap::enleverCle(bool cle)
 {
-    if (cle ==true)
+    if (cle ==true && getClePos().y!=-1 && getClePos().x!=-1)
         modifierValeurGameMap(' ',getClePos().y,getClePos().x);
 }
 

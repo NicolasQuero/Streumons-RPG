@@ -8,9 +8,9 @@ Jeu::Jeu(int i)
 {
     std::string MAP_PATH;
     if (i==1)
-    	MAP_PATH="Code/JeuCree/Jeu.txt";
+    	MAP_PATH="Code/JeuCree/Demo.txt";
     else
-	MAP_PATH="Code/JeuCree/Demo.txt";
+	MAP_PATH="Code/JeuCree/Jeu.txt";
     std::ifstream flux(MAP_PATH.c_str()); //on ouvre en lecture la liste des nom de map et on affiche le nom des map existante.
     if(flux.is_open())
     {
@@ -38,6 +38,7 @@ void Jeu::startGame() {
 
     int k=-1;//definit d'ou on viens
     int turn = 0;
+    cout << endl << "Vous vous reveillez en plein milieu d'une salle, votre but retrouver la sortie vivant !" << endl;
     cout << "comment voulez vous appeler votre personnage ?" << endl ;
     string nom;
     cin >> nom;
@@ -62,6 +63,7 @@ void Jeu::startGame() {
         Board board = Board(&Map, O);
         do {
             std::system("clear");
+	    this->afficherMiniMap();
             cout << endl << "********************** tour " << turn << " **********************" << endl << endl;
             board.printMap();
             manageStoryText();
